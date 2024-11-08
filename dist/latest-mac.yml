@@ -1,0 +1,11 @@
+version: 1.0.0
+files:
+  - url: AI-Chat-Desktop-1.0.0-mac.zip
+    sha512: 3wZLeMmOA6cG+HJamN9MgsgN6zjn2lxnPupDfdx6TrlV6gwEAxoC6ZuAX8mShw7koXlSysZsAVSIqm1BJAeA2g==
+    size: 120105353
+  - url: AI-Chat-Desktop-1.0.0.dmg
+    sha512: Icz6skeWXxoDyKNkA4ohVL1n9Iy4bGzpksA0uOhBzaQQ1PAVT4t328492RL7cJhWHqnIsB2NXDHV1XIE56RmuQ==
+    size: 124713178
+path: AI-Chat-Desktop-1.0.0-mac.zip
+sha512: 3wZLeMmOA6cG+HJamN9MgsgN6zjn2lxnPupDfdx6TrlV6gwEAxoC6ZuAX8mShw7koXlSysZsAVSIqm1BJAeA2g==
+releaseDate: '2024-11-08T06:38:04.951Z'

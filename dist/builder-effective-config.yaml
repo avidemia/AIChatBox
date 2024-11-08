@@ -1,0 +1,22 @@
+directories:
+  output: dist
+  buildResources: assets
+files:
+  - filter:
+      - build/**/*
+      - build/**/*
+      - public/**/*
+      - node_modules/**/*
+      - package.json
+extraMetadata:
+  main: build/electron.js
+appId: com.aichat.desktop
+productName: AI Chat Desktop
+mac:
+  category: public.app-category.productivity
+  target:
+    - dmg
+    - zip
+  icon: assets/icon.icns
+extends: react-cra
+electronVersion: 25.9.8

@@ -117,7 +117,7 @@ const ChatInterface = () => {
   const models = {
     openai: {
       name: 'OpenAI',
-      options: ['gpt-4o', 'gpt-4-vision'],  // Updated to use gpt-4o
+      options: ['gpt-4o', 'chatgpt-4o-latest'],  // Updated to use gpt-4o
       generatePrompt: (messages, attachments) => ({
         model: attachments.length > 0 ? "gpt-4o" : "gpt-4o",
         messages: messages.map(msg => ({
@@ -146,7 +146,7 @@ const ChatInterface = () => {
     },
     anthropic: {
       name: 'Anthropic',
-      options: ['claude-3-opus-latest', 'claude-3-5-sonnet-latest'],
+      options: ['claude-2', 'claude-3-5-sonnet-latest'],
       generatePrompt: (messages, attachments, model) => {
         const lastMessage = messages[messages.length - 1];
         return {
