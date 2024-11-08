@@ -1,4 +1,6 @@
-node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron[[:space:]]Framework.framework/Versions/A/Electron[[:space:]]Framework filter=lfs diff=lfs merge=lfs -text
+node_modules/electron/dist/* filter=lfs diff=lfs merge=lfs -text
+dist/* filter=lfs diff=lfs merge=lfs -text
+dist/mac/* filter=lfs diff=lfs merge=lfs -text
 *.dmg filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 app.asar filter=lfs diff=lfs merge=lfs -text
