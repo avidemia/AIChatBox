@@ -1,0 +1,69 @@
+{
+  "name": "ai-chat-desktop",
+  "version": "1.0.0",
+  "author": "AdaptiveBooks",
+  "description": "AI Chat Desktop Application",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run start:react\" \"npm run start:electron\"",
+    "start:react": "BROWSER=none react-scripts start",
+    "start:electron": "wait-on http://localhost:3000 && electron .",
+    "prebuild": "node scripts/copy-electron.js",
+    "build": "react-scripts build",
+    "build:mac": "npm run build && electron-builder --mac",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "electron-is-dev": "^2.0.0",
+    "katex": "^0.16.9",
+    "lucide-react": "^0.263.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-katex": "^3.0.1",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.3.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.2.0",
+    "copyfiles": "^2.4.1",
+    "electron": "^25.3.1",
+    "electron-builder": "^24.6.3",
+    "postcss": "^8.4.27",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.aichat.desktop",
+    "productName": "AI Chat Desktop",
+    "files": [
+      "build/**/*",
+      "public/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": ["dmg", "zip"],
+      "icon": "assets/icon.icns"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
