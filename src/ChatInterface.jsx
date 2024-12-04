@@ -94,7 +94,7 @@ const ChatInterface = () => {
   const models = {
     openai: {
       name: 'OpenAI',
-      options: ['gpt-4o', 'chatgpt-4o-latest'],  // Updated to use gpt-4o
+      options: ['o1-preview','o1-mini', 'gpt-4o'],  // Updated to use gpt-4o
       generatePrompt: (messages, attachments) => ({
         model: attachments.length > 0 ? "gpt-4o" : "gpt-4o",
         messages: messages.map(msg => ({
@@ -123,17 +123,16 @@ const ChatInterface = () => {
     },
     anthropic: {
       name: 'Anthropic',
-      options: ['claude-2', 'claude-3-5-sonnet-latest'],
+      options: ['claude-3-5-sonnet-latest', 'claude-3-5-opus-latest'],
       generatePrompt: (messages, attachments, model) => {
-        const lastMessage = messages[messages.length - 1];
         return {
           model: model,
-          messages: [{
-            role: lastMessage.role === 'user' ? 'user' : 'assistant',
-            content: lastMessage.attachments ? 
+          messages: messages.map(msg => ({
+            role: msg.role === 'user' ? 'user' : 'assistant',
+            content: msg.attachments ? 
               [
-                { type: "text", text: lastMessage.content },
-                ...lastMessage.attachments.map(att => ({
+                { type: "text", text: msg.content },
+                ...msg.attachments.map(att => ({
                   type: "image",
                   source: {
                     type: "base64",
@@ -142,14 +141,14 @@ const ChatInterface = () => {
                   }
                 }))
               ] : 
-              lastMessage.content
-          }],
+              msg.content
+          })),
           max_tokens: 4096
         };
       },
       headers: (apiKey) => ({
         'x-api-key': apiKey,
-        'anthropic-version': '2024-03-10',
+        'anthropic-version': '2023-06-01',
         'content-type': 'application/json'
       }),
       endpoint: 'https://api.anthropic.com/v1/messages',
